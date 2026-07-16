@@ -31,3 +31,12 @@ uv run python -m secondbrain
 | `LOG_FILE` | `app.log` | Path to the log file |
 
 Copy `.env.example` to `.env` for development defaults, then run with `uv run --env-file .env`.
+
+## Log Format
+
+Logs written to the console and log file omit milliseconds and use three-letter
+level names:
+
+```text
+2026-07-16 13:04:55 | INF | secondbrain.app:main:52 | Hello from secondbrain!
+```
