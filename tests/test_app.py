@@ -4,7 +4,7 @@ from types import SimpleNamespace
 import pytest
 from loguru import logger
 
-from secondbrain.app import _compact_log_format, configure_logging, main
+from secondbrain.app import compact_log_format, configure_logging, main
 
 LOG_LINE = re.compile(
     r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
@@ -56,4 +56,4 @@ def test_log_levels_use_short_labels(capfd, log_method, abbreviation):
 def test_other_log_levels_use_conventional_or_fallback_labels(level_name, abbreviation):
     record = {"level": SimpleNamespace(name=level_name)}
 
-    assert f" | <level>{abbreviation}</level>" in _compact_log_format(record)
+    assert f" | <level>{abbreviation}</level>" in compact_log_format(record)

@@ -38,13 +38,6 @@ uv run python -m secondbrain
 
 `uv run --env-file .env` loads the development environment explicitly; environment files are not loaded automatically.
 
-Console and file logs use a compact format with second-level timestamps and
-three-letter level names:
-
-```text
-2026-07-16 13:04:55 | INF | secondbrain.app:main:52 | Hello from secondbrain!
-```
-
 ## Testing
 
 Run tests:

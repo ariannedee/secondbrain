@@ -2,7 +2,7 @@ import sys
 
 from loguru import logger
 
-_LEVEL_ABBREVIATIONS = {
+LEVEL_ABBREVIATIONS = {
     "TRACE": "TRC",
     "DEBUG": "DBG",
     "INFO": "INF",
@@ -13,10 +13,10 @@ _LEVEL_ABBREVIATIONS = {
 }
 
 
-def _compact_log_format(record):
+def compact_log_format(record):
     """Return the compact format for a Loguru record."""
     level_name = record["level"].name
-    level = _LEVEL_ABBREVIATIONS.get(level_name, level_name[:3].upper())
+    level = LEVEL_ABBREVIATIONS.get(level_name, level_name[:3].upper())
     return (
         "<green>{time:YYYY-MM-DD HH:mm:ss}</green>"
         f" | <level>{level}</level>"
@@ -37,11 +37,11 @@ def configure_logging():
     log_level = os.environ.get("LOG_LEVEL", "INFO")
     log_file = os.environ.get("LOG_FILE", "app.log")
     logger.remove()
-    logger.add(sys.stderr, level=log_level, format=_compact_log_format)
+    logger.add(sys.stderr, level=log_level, format=compact_log_format)
     logger.add(
         log_file,
         level="DEBUG",
-        format=_compact_log_format,
+        format=compact_log_format,
         rotation="50 KB",
         retention=1,
     )
